@@ -14,11 +14,11 @@ class Yrenren:
         opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
         urllib2.install_opener(opener)
 
-        postData = urllib.urlencode({
+        post_data = urllib.urlencode({
             'email': self.email,
             'password': self.password
         })
-        req = urllib2.Request("http://www.renren.com/PLogin.do", postData)
+        req = urllib2.Request("http://www.renren.com/PLogin.do", post_data)
         res = urllib2.urlopen(req)
 
     def post_status(self, status):
@@ -30,7 +30,7 @@ class Yrenren:
         rtk = re_rtk.search(content).group(1)
         request_token = re_request_token.search(content).group(1)
         hostid = re_hostid.search(content).group(1)
-        post_url = 'http://shell.renren.com/' + hostid + '/status'
+        post_url = 'http://shell.renren.com/%s/status' % hostid
 
         post_data = urllib.urlencode({
             'content': status,

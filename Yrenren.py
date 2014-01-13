@@ -40,7 +40,7 @@ class Yrenren:
 
         post_url = 'http://shell.renren.com/%s/status' % self.hostid
         post_data = urllib.urlencode({
-            'content': status,
+            'content': status.encode('utf-8'),
             'hostid': self.hostid,
             '_rtk': self.rtk,
             'requestToken': self.request_token,
@@ -57,7 +57,7 @@ class Yrenren:
 
         post_url = 'http://comment.renren.com/comment/xoa2/create'
         post_data = urllib.urlencode({
-            'content': reply_content,
+            'content': reply_content.encode('utf-8'),
             'type': 'status',
             'entryId': entry_id,
             'entryOwnerId': entry_owner_id,
